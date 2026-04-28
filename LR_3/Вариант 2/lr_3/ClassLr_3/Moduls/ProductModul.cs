@@ -11,7 +11,7 @@ namespace ClassLr_3
 {
     public class ProductModul : Dobavlenie
     {
-        List<Product> Dobavlenie.LoadDataFromCsv()
+        public List<Product> LoadDataFromCsv()
         {
             List<Product> allTovar = new List<Product>();
             string path = "data3.csv";

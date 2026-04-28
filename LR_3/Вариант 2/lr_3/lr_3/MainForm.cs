@@ -64,7 +64,7 @@ namespace lr_3
         private void ProductComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Product selectedProduct = ProductComboBox.SelectedItem as Product;
-            PriceLabel.Text = selectedProduct.Price;
+            PriceLabel.Text = selectedProduct.Price.ToString();
             DataLabel.Text = selectedProduct.Data;
             labelKol_vo.Text = selectedProduct.Kol_vo;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lr_3
 {
-    internal class Product
+    public class Product
     {
         private string name_;
         private double price_;
@@ -28,9 +28,9 @@ namespace lr_3
             get { return name_; }
         }
 
-        public string Price
+        public double Price
         {
-            get { return price_.ToString(); }
+            get { return price_; }
         }
 
         public string Kol_vo
