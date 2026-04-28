@@ -73,75 +73,67 @@ namespace Test_Lr
         }
 
 
-        //[TestMethod]
-        //public void TGetAllMovies()
-        //{
-
-        //    List<Product> expectedMovies = new List<Product>();
-        //    expectedMovies.Add(new Product("Мандарины", 13.0, 5, 15, "../../Рисунок/Мандарины.jpg"));
-        //    expectedMovies.Add(new Product("Гранаты", 25.0, 7, 13, "../../Рисунок/Гранат.jpg"));
-        //    expectedMovies.Add(new Product("Огурцы", 8.0, 6, 34, "../../Рисунок/Огурцы.jpg"));
-        //    expectedMovies.Add(new Product("Помидоры", 3.0, 5, 12, "../../Рисунок/Помидоры.jpg"));
-        //    expectedMovies.Add(new Product("Курица", 20.0, 10, 35, "../../Рисунок/Куриное филе.jpg"));
-        //    expectedMovies.Add(new Product("Говядина", 13.0, 10, 10, "../../Рисунок/Филе говядины.jpg"));
-
-
-
-        //    Assert.AreEqual(expectedMovies.Count, allProduct.Count, "Количество продуктов не совпадает");
-
-        //    for (int i = 0; i < expectedMovies.Count; i++)
-        //    {
-        //        Assert.AreEqual(expectedMovies[i].Name, allProduct[i].Name);
-        //        Assert.AreEqual(expectedMovies[i].Price, allProduct[i].Price);
-        //        Assert.AreEqual(expectedMovies[i].Kol_vo, allProduct[i].Kol_vo);
-        //        Assert.AreEqual(expectedMovies[i].Data, allProduct[i].Data);
-        //        Assert.AreEqual(expectedMovies[i].Foto, allProduct[i].Foto);
-        //    }
-
-        //}
-
         [TestMethod]
-        public void TGetAllProducts()
+        public void TGetAllMovies()
         {
-            // Arrange
-            List<Product> expectedProducts = new List<Product>
-        {
-            new Product("Мандарины", 13.0, 5, 15, "../../Рисунок/Мандарины.jpg"),
-            new Product("Гранаты", 25.0, 7, 13, "../../Рисунок/Гранат.jpg"),
-            new Product("Огурцы", 8.0, 6, 34, "../../Рисунок/Огурцы.jpg"),
-            new Product("Помидоры", 3.0, 5, 12, "../../Рисунок/Помидоры.jpg"),
-            new Product("Курица", 20.0, 10, 35, "../../Рисунок/Куриное филе.jpg"),
-            new Product("Говядина", 13.0, 10, 10, "../../Рисунок/Филе говядины.jpg")
-        };
 
-            // Act
-            List<Product> actualProducts = allProduct;
+            List<Product> expectedMovies = new List<Product>();
+            expectedMovies.Add(new Product("Мандарины", 13.0, 5, 15, "../../Рисунок/Мандарины.jpg"));
+            expectedMovies.Add(new Product("Гранаты", 25.0, 7, 13, "../../Рисунок/Гранат.jpg"));
+            expectedMovies.Add(new Product("Огурцы", 8.0, 6, 34, "../../Рисунок/Огурцы.jpg"));
+            expectedMovies.Add(new Product("Помидоры", 3.0, 5, 12, "../../Рисунок/Помидоры.jpg"));
+            expectedMovies.Add(new Product("Курица", 20.0, 10, 35, "../../Рисунок/Куриное филе.jpg"));
+            expectedMovies.Add(new Product("Говядина", 13.0, 10, 10, "../../Рисунок/Филе говядины.jpg"));
 
-            // Assert
-            Assert.AreEqual(expectedProducts.Count, actualProducts.Count,
-                "Количество продуктов не совпадает");
 
-            for (int i = 0; i < expectedProducts.Count; i++)
+
+            Assert.AreEqual(expectedMovies.Count, allProduct.Count, "Количество продуктов не совпадает");
+
+            for (int i = 0; i < expectedMovies.Count; i++)
             {
-                Assert.AreEqual(expectedProducts[i].Name, actualProducts[i].Name,
-                    $"Название продукта {i} не совпадает");
-
-                Assert.AreEqual(expectedProducts[i].Price, actualProducts[i].Price, 0.001,
-                    $"Цена продукта {i} не совпадает");
-
-                Assert.AreEqual(expectedProducts[i].Kol_vo, actualProducts[i].Kol_vo,
-                    $"Количество продукта {i} не совпадает");
-
-                Assert.AreEqual(expectedProducts[i].Data, actualProducts[i].Data,
-                    $"Срок годности продукта {i} не совпадает");
-
-                Assert.AreEqual(expectedProducts[i].Foto, actualProducts[i].Foto,
-                    $"Путь к фото продукта {i} не совпадает");
+                Assert.AreEqual(expectedMovies[i].Name, allProduct[i].Name);
+                Assert.AreEqual(expectedMovies[i].Price, allProduct[i].Price);
+                Assert.AreEqual(expectedMovies[i].Kol_vo, allProduct[i].Kol_vo);
+                Assert.AreEqual(expectedMovies[i].Data, allProduct[i].Data);
+                Assert.AreEqual(expectedMovies[i].Foto, allProduct[i].Foto);
             }
+
         }
 
+        [TestMethod]
+        public void FilterFilms_ByGenre_ReturnsOnlyMatchingFilms() // Проверка фильтрации фильмов по жанру
+        {
+
+            List<Product> product = new List<Product>
+            {
+               new Product("Огурцы", 8.0, 6, 34, "../../Рисунок/Огурцы.jpg"),
+               new Product("Помидоры", 3.0, 5, 12, "../../Рисунок/Помидоры.jpg")
+            };
+
+                List<Product> allProduct = product;
+                List<Product> fantasyProduct = new List<Product>();
+                foreach (Product products in allProduct)
+                {
+
+                if (products.Name == "Овощи")
+                {
+                    fantasyProduct.Add(products);
+                }
+                }
+
+            List<Product> result = fantasyProduct;
+
+            Assert.AreEqual(2, result.Count);
+            Assert.AreEqual("Властелин колец", result[0].Name);
+            Assert.AreEqual("Гарри Поттер", result[1].Name);
+        }
+
+        
     }
 }
+
+    
+
 
     
 
